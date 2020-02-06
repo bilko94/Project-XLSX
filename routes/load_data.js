@@ -5,12 +5,21 @@ const fs = require('fs');
 router.post('/load_data', (req,res) => {
     console.log(req.body);
     var ret = filereader(req.body.dir);
-    console.log(ret);
     ret.then(result => {
-        res.json(result);
+        var compiled = dataparser(result); 
+        res.json(compiled);
     })
 })
 
+function dataparser(result){
+    var arr = [];
+    var i = result.length;
+    var pos = 1;
+    while (pos < i)
+        if (result[pos]["Your Details"].length)
+            arr.push(result[pos++]["Your Details"]);
+    return(arr);
+}
 
 function filereader(dir){
     const dirpath = path.join(__dirname,dir);
@@ -24,8 +33,10 @@ function filereader(dir){
                 var exploded_dir = dir.split('.');
                 var compiled_dir = '.' + exploded_dir[2];
                 var data = compiled_dir + '/' + file;
-                arr.push(data);
-                console.log(Parser(data));
+                // console.log(file.split('.')[file.split('.') .length - 1]);
+                if (file.split('.')[file.split('.') .length - 1] === 'xlsx')
+                    arr.push(Parser(data));
+                else console.log('invlaid file')
             });
             resolve(arr);
         });
@@ -68,4 +79,5 @@ function Parser(dir){
     })
     return(ret);
 }
+
 module.exports = router;
