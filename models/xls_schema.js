@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
+
 const schema = mongoose.Schema;
 const data = new schema({
-    name : {type: String,default:''},
-    surname : {type: String,default:''},
-    title : {type: String,default:''},
-    teamName : {type: String,default:''},
-    superior : {type: String,default:''},
-    backEnd : {type: Array},
-    frontEnd : {type: Array},
-    NTTsystems : {type: Array}
+    Name : {type: String,default:''},
+    Surname : {type: String,default:''},
+    Job_Title : {type: String,default:''},
+    Team_name : {type: String,default:''},
+    Line_Manager : {type: String,default:''},
+    Back_end : {type: Array},
+    Front_end : {type: Array},
+    NTT_systems : {type: Array}
 });
 
 const xlsdata = mongoose.model('xlsdata', data, 'xlsdata');

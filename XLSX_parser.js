@@ -39,6 +39,6 @@ function Parser(){
         ret[y] = data;
         // console.log(ret);
     })
-    console.log(ret);
-    // return(res);
+    // console.log(ret);
+    return(ret);
 }
