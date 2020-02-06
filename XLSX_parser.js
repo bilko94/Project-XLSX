@@ -1,8 +1,6 @@
 //This file just takes an xlsx file and converts it into an obj with a format.
 
-Parser();
-
-function Parser(){
+export function Parser(){
     var XLSX = require('xlsx');
     var workbook = XLSX.readFile('./Excel files/Shane Skills.xlsx');
     var sheet_name_list = workbook.SheetNames;
