@@ -1,6 +1,8 @@
 const router = require('express').Router();
+const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
+const xls_schema = require('../models/xls_schema.js');
 
 router.post('/load_data', (req,res) => {
     console.log(req.body);
@@ -84,5 +86,19 @@ function Parser(dir){
     })
     return(ret);
 }
+
+router.post('/purge',(req,res) => {
+    if (!req.body.token)
+        res.json('Forbbiden');
+    else if (req.body.token === 'admin'){
+        const uri = 'mongodb://localhost:5002/sandbox'; 
+        mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false});
+        mongoose.connection.db.dropDatabase(function () { console.log('purged');res.json('purged')});
+    } else { res.json('forbbiden')}
+})
+
+router.post('/get',(req,res) => {
+    xls_schema.find().exec().then(result => {res.json(result)})
+})
 
 module.exports = router;
