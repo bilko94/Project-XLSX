@@ -6,8 +6,11 @@ router.post('/load_data', (req,res) => {
     console.log(req.body);
     var ret = filereader(req.body.dir);
     ret.then(result => {
-        var compiled = dataparser(result); 
-        res.json(compiled);
+        console.log(result);
+        if (result !== 'no files or invalid dir'){
+            var compiled = dataparser(result); 
+            res.json(compiled);
+        } else res.json('no files or invalid dir');
     })
 })
 
@@ -27,18 +30,21 @@ function filereader(dir){
     let promise = new Promise(resolve => {
         fs.readdir(dirpath, function (err, files) {
             if (err) {
-                return console.log('Unable to scan directory: ' + err);
+                return;
             }
             files.forEach(function (file) {
                 var exploded_dir = dir.split('.');
                 var compiled_dir = '.' + exploded_dir[2];
                 var data = compiled_dir + '/' + file;
-                // console.log(file.split('.')[file.split('.') .length - 1]);
-                if (file.split('.')[file.split('.') .length - 1] === 'xlsx')
+                if (file.split('.')[file.split('.') .length - 1] === 'xlsx'){
                     arr.push(Parser(data));
-                else console.log('invlaid file')
+                    // console.log(Parser(data));
+                }
+                else console.log('invlaid file');
             });
-            resolve(arr);
+            console.log(arr.length);
+            if (arr.length) resolve(arr);
+            else resolve('no files or invalid dir');
         });
     })
     return (promise);
