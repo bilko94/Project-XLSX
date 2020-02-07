@@ -138,4 +138,46 @@ router.post('/get',(req,res) => {
     xlsdataModel.find().exec().then(result => {res.json(result)})
 })
 
+function parseOldFormatExcelFile(docName){
+    var workbook = XLSX.readFile(docName);
+    
+    var user = {
+        name : {type: String, default:''},
+        surname : {type: String ,default:''},
+        title : {type: String, default:''},
+        teamName : {type: String, default:''},
+        superior : {type: String, default:''},
+        backEnd : [],
+        frontEnd : [],
+        NTTsystems : []
+    };
+
+    let details = workbook.Sheets[workbook.SheetNames[0]];
+    user.name = details['A2'].v;
+    user.surname = details['B2'].v;
+    user.title = details['C2'].v;
+    user.teamName = details['D2'].v;
+    user.superior = details['E2'].v;
+	
+	userArrs = Array(user.backEnd, user.frontEnd, user.NTTsystems);
+	for (k = 0; k < 3; k++)
+	{
+		let sheetArr = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[k + 1]], {header:1})
+		let bOther = 0;
+		sheetArr.forEach((row, index, arr) => {
+			if (row[0] == "Other") {
+				bOther = 1;
+				return;
+			}
+			let temp = {Other: bOther};
+			for ( i= 0 ; i < 3 ; i++ ) {temp[arr[0][i]] = (row[i] || row[i] == 0) ? row[i] : "NULL";}
+			if (row[0]) userArrs[k].push(temp);
+		});
+	}
+	userArrs.forEach((arrs) => {
+		arrs.slice(1);
+	})
+	return (user);
+}
+
 module.exports = router;
