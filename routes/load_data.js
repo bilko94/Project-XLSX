@@ -16,14 +16,13 @@ router.post('/load_data', (req,res) => {
                 console.log(data+" "+pos);
                 continue;
             }
-
             const Name = data["Your Details"][0].Name;
             const Surname = data["Your Details"][0].Surname;
-            const Job_title = data["Your Details"][0]["Job Title"];
+            const job_title = data["Your Details"][0]["Job Title"];
             if (data["Your Details"][0]["Team/BU/Office"])
-                var Team_Name = data["Your Details"][0]["Team/BU/Office"];
+                var Team_name = data["Your Details"][0]["Team/BU/Office"];
             else
-                var Team_Name = "";
+                var Team_name = "";
             if (data["Your Details"][0]["Line_Manager"])
                 var Line_Manager = data["Your Details"][0]["Line_Manager"];
             else
@@ -35,8 +34,8 @@ router.post('/load_data', (req,res) => {
             const newUser = new xlsdataModel({
                 Name,
                 Surname,
-                Job_title,
-                Team_Name,
+                job_title,
+                Team_name,
                 Line_Manager,
                 Back_end,
                 Front_end,
@@ -80,11 +79,9 @@ function filereader(dir){
                 var data = compiled_dir + '/' + file;
                 if (file.split('.')[file.split('.') .length - 1] === 'xlsx'){
                     arr.push(Parser(data));
-                    // console.log(Parser(data));
                 }
                 else console.log('invlaid file');
             });
-            console.log(arr.length);
             if (arr.length) resolve(arr);
             else resolve('no files or invalid dir');
         });
