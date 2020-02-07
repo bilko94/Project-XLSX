@@ -9,21 +9,23 @@ router.post('/load_data', (req,res) => {
     var ret = filereader(req.body.dir);
     var pos = 0;
     ret.then(result => {
-        while (result[pos++]){
-            console.log("adding");
+        while (result[pos]){
+            console.log(pos);
             data = explode_data(result, pos);
-            if (data === undefined)
+            if (data === undefined){
+                console.log(data+" "+pos);
                 continue;
-            
+            }
+            console.log(data["Your Details"][0]["Line_Manager"]);
             const Name = data["Your Details"][0].Name;
             const Surname = data["Your Details"][0].Surname;
-            const Job_title = data["Your Details"][0].Job_title;
-            if (data["Your Details"][0].Team_Name)
-                var Team_Name = data["Your Details"][0].Team_Name;
+            const Job_title = data["Your Details"][0]["Job Title"];
+            if (data["Your Details"][0]["Team/BU/Office"])
+                var Team_Name = data["Your Details"][0]["Team/BU/Office"];
             else
                 var Team_Name = "";
-            if (data["Your Details"][0].Line_Manager)
-                var Line_Manager = data["Your Details"][0].Line_Manager;
+            if (data["Your Details"][0]["Line_Manager"])
+                var Line_Manager = data["Your Details"][0]["Line_Manager"];
             else
                 var Line_Manager = "";
             const Back_end = data["Back_end"];
@@ -40,8 +42,9 @@ router.post('/load_data', (req,res) => {
                 Front_end,
                 NTT_systems
             });
-            newUser.save().then( () => console.log('User added') )
+            newUser.save().then( () => console.log('User '+Name+' added') )
             .catch( err => res.status(400).json('Error: ' + err));
+            pos++;
         }
         res.json("Users Added");
     })
@@ -135,7 +138,7 @@ router.post('/purge',(req,res) => {
 })
 
 router.post('/get',(req,res) => {
-    xls_schema.find().exec().then(result => {res.json(result)})
+    xlsdataModel.find().exec().then(result => {res.json(result)})
 })
 
 module.exports = router;
