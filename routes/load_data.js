@@ -12,11 +12,11 @@ router.post('/load_data', (req,res) => {
         while (result[pos]){
             console.log(pos);
             data = explode_data(result, pos);
-            if (data === "undefined"){
+            if (data === undefined){
                 console.log(data+" "+pos);
                 continue;
             }
-            console.log(data["Your Details"][0]["Line_Manager"]);
+
             const Name = data["Your Details"][0].Name;
             const Surname = data["Your Details"][0].Surname;
             const Job_title = data["Your Details"][0]["Job Title"];
@@ -52,21 +52,19 @@ router.post('/load_data', (req,res) => {
 
 function explode_data(result, pos){
     var res = {};
-    if (result[pos] === undefined)
-        return ("undefined");
     res = result[pos];
     return(res);
 }
 
-function dataparser(result){
-    var arr = [];
-    var i = result.length;
-    var pos = 1;
-    while (pos < i)
-        if (result[pos]["Your Details"].length)
-            arr.push(result[pos++]["Your Details"]);
-    return(arr);
-}
+// function dataparser(result){
+//     var arr = [];
+//     var i = result.length;
+//     var pos = 1;
+//     while (pos < i)
+//         if (result[pos]["Your Details"].length)
+//             arr.push(result[pos++]["Your Details"]);
+//     return(arr);
+// }
 
 function filereader(dir){
     const dirpath = path.join(__dirname,dir);
