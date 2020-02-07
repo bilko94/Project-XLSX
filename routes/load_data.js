@@ -12,7 +12,7 @@ router.post('/load_data', (req,res) => {
         while (result[pos]){
             console.log(pos);
             data = explode_data(result, pos);
-            if (data === undefined){
+            if (data === "undefined"){
                 console.log(data+" "+pos);
                 continue;
             }
@@ -52,6 +52,8 @@ router.post('/load_data', (req,res) => {
 
 function explode_data(result, pos){
     var res = {};
+    if (result[pos] === undefined)
+        return ("undefined");
     res = result[pos];
     return(res);
 }
