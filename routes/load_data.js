@@ -58,7 +58,6 @@ function Parser(dir){
         var worksheet = workbook.Sheets[y];
         var headers = {};
         var data = [];
-        var obj = {};
         for (a in worksheet) {
             if (a[0] === '!')  continue;
             var tt = 0;
