@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
 let xlsdataModel = require('../models/xls_schema.js');
@@ -11,8 +12,6 @@ router.post('/load_data', (req,res) => {
         while (result[pos++]){
             console.log("adding");
             data = explode_data(result, pos);
-            // console.log(data["Your Details"][0].Name);
-            // console.log(data["Back_end"]);
             if (data === undefined)
                 continue;
             
@@ -70,18 +69,21 @@ function filereader(dir){
     let promise = new Promise(resolve => {
         fs.readdir(dirpath, function (err, files) {
             if (err) {
-                return console.log('Unable to scan directory: ' + err);
+                return;
             }
             files.forEach(function (file) {
                 var exploded_dir = dir.split('.');
                 var compiled_dir = '.' + exploded_dir[2];
                 var data = compiled_dir + '/' + file;
-                // console.log(file.split('.')[file.split('.') .length - 1]);
-                if (file.split('.')[file.split('.') .length - 1] === 'xlsx')
+                if (file.split('.')[file.split('.') .length - 1] === 'xlsx'){
                     arr.push(Parser(data));
-                else console.log('invlaid file')
+                    // console.log(Parser(data));
+                }
+                else console.log('invlaid file');
             });
-            resolve(arr);
+            console.log(arr.length);
+            if (arr.length) resolve(arr);
+            else resolve('no files or invalid dir');
         });
     })
     return (promise);
@@ -95,7 +97,6 @@ function Parser(dir){
         var worksheet = workbook.Sheets[y];
         var headers = {};
         var data = [];
-        var obj = {};
         for (a in worksheet) {
             if (a[0] === '!')  continue;
             var tt = 0;
@@ -122,5 +123,19 @@ function Parser(dir){
     })
     return(ret);
 }
+
+router.post('/purge',(req,res) => {
+    if (!req.body.token)
+        res.json('Forbbiden');
+    else if (req.body.token === 'admin'){
+        const uri = 'mongodb://localhost:5002/sandbox'; 
+        mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false});
+        mongoose.connection.db.dropDatabase(function () { console.log('purged');res.json('purged')});
+    } else { res.json('forbbiden')}
+})
+
+router.post('/get',(req,res) => {
+    xls_schema.find().exec().then(result => {res.json(result)})
+})
 
 module.exports = router;
