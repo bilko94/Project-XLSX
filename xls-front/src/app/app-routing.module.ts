@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'all', component: AllComponent},
   { path: 'add', component: AddComponent},
   { path: 'bookmarks', component: BookmarksComponent},
+  { path: '**', pathMatch: 'full', redirectTo: 'home' }
   // { path: 'details/:id', component: DetailsComponent }   //depends if if we want to display all info on a new page or underneath selected person
 ]
 

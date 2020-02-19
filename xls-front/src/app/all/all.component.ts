@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-all',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllComponent implements OnInit {
 
+  showAll: Boolean;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.showAll = true;
   }
 
 }

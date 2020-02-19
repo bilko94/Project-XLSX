@@ -1,24 +1,68 @@
-<div class="grid-container--lg">
 
-    <!-- search bar -->
-    <div class="grid--md gutter--xs">
-        <div class="column--md-11">
-            <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+<!-- displays if all is being displayed -->
+<ng-template [ngIf]="resultsAll" [ngIfElse]="normal">
 
-                <div class="form-group">
-                    <input type="text" id="searchInput" class="form-control" formControlName="param" placeholder="search by employee ID" maxlength="10"/>
-                    <p class="help-block">Maximum of 10 characters</p>
-                </div>
-            </form>
+    <div class="grid-container--lg">
 
+        <h4 class="srchMargin">Search Engine</h4>
+
+        <!-- search bar -->
+        <div class="grid--md gutter--xs">
+            <div class="column--md-11">
+                <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <input type="text" id="searchInput" class="form-control" formControlName="param" placeholder="search by employee ID" maxlength="10"/>
+                        <p class="help-block">Maximum of 10 characters</p>
+                    </div>
+                </form>
+            </div>
+            <div class="column--md-1">
+                <button type="submit" [disabled]="!searchForm.valid" class="btn btn-block btn-primary">Search</button>
+            </div>
         </div>
-        <div class="column--md-1">
-            <button type="submit" [disabled]="!searchForm.valid" class="btn btn-block btn-primary">Search</button>
-        </div>
+
+        <hr class="reduceSpace">
+
+        <ng-template [ngIf]="show" [ngIfElse]="all">
+            <app-results [data]="searchResults"></app-results>    <!-- give search results over to this component if btn is pressed -->
+        </ng-template>
+
+        <ng-template #all>
+            <app-results [showAll]="resultsAll"></app-results>  <!-- hands var over to results to display all -->
+        </ng-template>
+
     </div>
 
-    <hr class="reduceSpace">
+</ng-template>
 
-    <!-- results here -->
+<!-- displays if just want to have search feature -->
+<ng-template #normal>
 
-</div>
+    <div class="grid-container--lg">
+
+        <h4 class="srchMargin">Search Engine</h4>
+
+        <!-- search bar -->
+        <div class="grid--md gutter--xs">
+            <div class="column--md-11">
+                <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <input type="text" id="searchInput" class="form-control" formControlName="param" placeholder="search by employee ID" maxlength="10"/>
+                        <p class="help-block">Maximum of 10 characters</p>
+                    </div>
+                </form>
+            </div>
+            <div class="column--md-1">
+                <button type="submit" [disabled]="!searchForm.valid" class="btn btn-block btn-primary">Search</button>
+            </div>
+        </div>
+
+        <hr class="reduceSpace">
+
+        <ng-template [ngIf]="show">
+            <app-results [data]="searchResults"></app-results>    <!-- give search results over to this component if btn is pressed -->
+        </ng-template>
+
+    </div>
+
+</ng-template>

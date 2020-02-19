@@ -1,5 +1,5 @@
 
-<div class="site-search"></div>
+<div class="site-search"></div>      <!-- Must be able to take input via this and display on results page...so a form..? -->
 
 <nav class="navbar"> <!-- IMPORTANT: add the class `navbar-fixed-top` to position it at the top of the window -->
 
@@ -33,7 +33,7 @@
       <li role="separator" class="divider hidden-mobile"></li>
       <li>
         <!-- Icon-search button -->
-        <a href="#" data-toggle="site-search">
+        <a data-toggle="site-search">
           <span class="fa fa-search"></span> Search
         </a>
       </li>
@@ -41,7 +41,7 @@
       <li role="separator" class="divider hidden-mobile"></li>
       <li class="hidden-mobile">
         <!-- Icon-badge button -->
-        <button type="button" class="navbar-btn btn">
+        <button type="button" class="navbar-btn btn" (click)="goToBooks()">
           <span class="icon-badge">
             <i aria-hidden="true" class="fa fa-bookmark"></i>
             <span class="badge bg-danger">3</span>

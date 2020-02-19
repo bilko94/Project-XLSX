@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-results',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
+  @Input() showAll?: Boolean;
+  @Input() data;    //define data type first in a class
+
   constructor() { }
 
   ngOnInit(): void {
+    //method to see if showAll var is true --> will then fetch all users
   }
+
 
 }
