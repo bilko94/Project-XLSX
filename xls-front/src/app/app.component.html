@@ -1,3 +1,6 @@
+
+<div class="site-search"></div>
+
 <nav class="navbar"> <!-- IMPORTANT: add the class `navbar-fixed-top` to position it at the top of the window -->
 
     <!-- Left utility nav -->
@@ -13,7 +16,7 @@
 
       <li>
         <!-- Company logo -->
-        <a class="horizontal-logo" href="#" [routerLink]="['/home']" title="Return home">
+        <a class="horizontal-logo" href="#" title="Home">
           <div class="logo-image" title="NTT"></div>
           <div class="logo-title"><span>skills<br>portal</span></div>
         </a>
@@ -24,13 +27,13 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="hidden-mobile">
         <!-- Plain text link -->
-        <a href="#" [routerLink]="['/home']">Home</a>
+        <a href="#" >Home</a>
       </li>
       <!-- Divider -->
       <li role="separator" class="divider hidden-mobile"></li>
       <li>
         <!-- Icon-search button -->
-        <a href="#" [routerLink]="['/search']">
+        <a href="#" data-toggle="site-search">
           <span class="fa fa-search"></span> Search
         </a>
       </li>
@@ -53,9 +56,15 @@
           <span class="fa fa-user"></span> Current User <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="#">Log Out</a></li>
-          <li><a href="#">Change User</a></li>
-          <li><a href="#">Change Preferences</a></li>
+          <li>
+            <a href="#"><span class="fa fa-sign-in"></span> Log Out</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-user"></span> Change User</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-gear"></span> Preferences</a>
+          </li>
         </ul>
       </li>
 
@@ -75,5 +84,10 @@
 
     </ul>
   </nav>
+
+
+<main class="page-wrapper">
+  <app-home></app-home>
+</main>
 
 <router-outlet></router-outlet>
