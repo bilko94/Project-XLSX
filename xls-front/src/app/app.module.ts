@@ -8,13 +8,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ResultsComponent } from './results/results.component';
 import { SearchComponent } from './search/search.component';
+import { AllComponent } from './all/all.component';
+import { AddComponent } from './add/add.component';
+import { BookmarksComponent } from './bookmarks/bookmarks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ResultsComponent,
-    SearchComponent
+    SearchComponent,
+    AllComponent,
+    AddComponent,
+    BookmarksComponent
   ],
   imports: [
     BrowserModule,
