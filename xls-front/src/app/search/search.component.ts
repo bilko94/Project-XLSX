@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
     const user = { username:"liam", password:"mai-san" };
     const ProcessedData = { "frontend":"skill..." };
     const data = { action:"add", ProcessedData };
-    this.socketService.sendReq(data, user);
+    this.socketService.sendReq(data, user).then(res => { console.log(res) });
   }
 
 }

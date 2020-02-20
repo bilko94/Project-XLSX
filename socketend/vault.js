@@ -25,7 +25,7 @@ module.exports.encryptor = class vault {
                                 recipient: users[i],
                                 request: result
                             };
-                        } catch { return({status:"passErr"}); }
+                        } catch { return({status:"passErr", user:users[i].username}); }
                     }
             }
         } catch { return({status:"formErr"}); }

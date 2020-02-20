@@ -28,10 +28,9 @@ export class vaultClass {
                         } catch { return({status:"passErr"}); }
                     }
             }
-        } catch { return({status:"formErr"}); }
+        } catch { return({status:"passErr/formErr"}); }
     }
     package(data, recipient) {
-        console.log('wraping.......');
         let stringData = JSON.stringify(data);
         let encryptedData = this.encrypt(stringData, recipient.password);
         let message = {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { vaultClass } from './vault';
+import { promise } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,16 @@ export class XlsService {
     const conn = new WebSocket('ws://localhost:4000');
     const vault = new vaultClass();
     let request = vault.package(req, user);
-    console.log(request);
+    return new Promise((resolve) => {
     conn.onopen = () => {
       conn.send(request);
-    }
-    console.log( 'sending..........' );
-    
+        conn.onmessage = (message) => {
+          let res = vault.validate(message.data, [user]);
+          if (res.status === 'valid')
+            resolve(res.request);
+          else resolve(res);
+        }
+      };
+    })
   }
 }
