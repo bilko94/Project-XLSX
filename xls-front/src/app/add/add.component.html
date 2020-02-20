@@ -1,1 +1,90 @@
-<p>add works!</p>
+<div id="MainContainer" class="grid-container--lg">
+  <h4 class="heading">Add a User:</h4>
+
+  <!-- <div class="grid--md gutter--xs"> -->
+    <p>Please fill in the following forms. You cannot submit until all fields are populated.</p>
+    <!-- use data-progress-steps="linear" to allow moving forwards & backwards only -->
+    <div class="accordion-group progress-steps" data-progress-steps="editable" skills-matrix-accordion>
+      <div class="accordion">
+        <div class="accordion-heading active" data-toggle="collapse">
+          <span class="progress-step">User Details:</span>
+        </div>
+        <div class="accordion-content collapse in">
+          <div class="row">
+            <div class="col-xs-12">
+              <!-- <p>The <code>[data-progress-steps]</code> attribute enforces that exactly 1 accordion must be open at any time.</p> -->
+              DETAILS COMPONENT HERE
+              <app-details-form></app-details-form>
+            </div>
+            <div class="col-xs-12">
+              <div class="btn-toolbar pull-right">
+                <button type="button" class="btn btn-primary" onClick="$('[skills-matrix-accordion]').trigger('next');">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-heading disabled collapsed" data-toggle="collapse">
+          <span class="progress-step">Back End:</span>
+        </div>
+        <div class="accordion-content collapse">
+          <div class="row">
+            <div class="col-xs-12">
+              <!-- <p>When <code>[data-progress-steps="editable"]</code> the user can click on a previously completed accordion.</p> -->
+              BACK END COMPONENT HERE
+              <app-backend-form></app-backend-form>
+            </div>
+            <div class="col-xs-12">
+              <div class="btn-toolbar pull-right">
+                <button type="button" class="btn btn-default" onClick="$('[skills-matrix-accordion]').trigger('back');">Back</button>
+                <button type="button" class="btn btn-primary" onClick="$('[skills-matrix-accordion]').trigger('next');">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-heading disabled collapsed" data-toggle="collapse">
+          <span class="progress-step">Front End:</span>
+        </div>
+        <div class="accordion-content collapse">
+          <div class="row">
+            <div class="col-xs-12">
+              <!-- <p>When <code>[data-progress-steps="linear"]</code> the user cannot click on a previously completed accordion.</p> -->
+              FRONT END COMPONENT HERE
+              <app-frontend-form></app-frontend-form>
+            </div>
+            <div class="col-xs-12">
+              <div class="btn-toolbar pull-right">
+                <button type="button" class="btn btn-default" onClick="$('[skills-matrix-accordion]').trigger('back');">Back</button>
+                <button type="button" class="btn btn-primary" onClick="$('[skills-matrix-accordion]').trigger('next');">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-heading disabled collapsed" data-toggle="collapse">
+          <span class="progress-step">NTT Systems:</span>
+        </div>
+        <div class="accordion-content collapse">
+          <div class="row">
+            <div class="col-xs-12">
+              <!-- <p>Navigation through progress steps can be accomplished with <code>$progressSteps.trigger('next')</code>, <code>$progressSteps.trigger('back')</code>, <code>$progressSteps.trigger('complete')</code>, and <code>$progressSteps.trigger('reset')</code>.</p> -->
+              NTT SYSTEMS COMPONENT HERE
+              <app-nttsystems-form></app-nttsystems-form>
+            </div>
+            <div class="col-xs-12">
+              <div class="btn-toolbar pull-right">
+                <button type="button" class="btn btn-default" onClick="$('[skills-matrix-accordion]').trigger('back');">Back</button>
+                <button type="button" class="btn btn-primary" onClick="$('[skills-matrix-accordion]').trigger('complete'); basecoat.confirm('You have reached the end.', 'Would you like to start over?').on('accept', function () { $('[skills-matrix-accordion]').trigger('reset'); });">Finish</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- </div> -->
+</div>

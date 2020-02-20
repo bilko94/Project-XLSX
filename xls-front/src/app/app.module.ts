@@ -12,6 +12,10 @@ import { AllComponent } from './all/all.component';
 import { AddComponent } from './add/add.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { DetailsFormComponent } from './add/details-form/details-form.component';
+import { BackendFormComponent } from './add/backend-form/backend-form.component';
+import { FrontendFormComponent } from './add/frontend-form/frontend-form.component';
+import { NttsystemsFormComponent } from './add/nttsystems-form/nttsystems-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     AllComponent,
     AddComponent,
     BookmarksComponent,
-    NavbarComponent
+    NavbarComponent,
+    DetailsFormComponent,
+    BackendFormComponent,
+    FrontendFormComponent,
+    NttsystemsFormComponent
   ],
   imports: [
     BrowserModule,
