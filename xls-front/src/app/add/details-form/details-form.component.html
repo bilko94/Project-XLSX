@@ -1,3 +1,28 @@
-<!-- <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-
-</form> -->
+<form [formGroup]="detailsForm" (ngSubmit)="detailsSubmit()">
+  <div class="form-group">
+    <label for="firstName" class="control-label">Name<span class="info"></span></label>
+    <input type="text" class="form-control" id="firstName" placeholder="Name">
+    <!-- <p class="help-block"></p> -->
+  </div>
+  <div class="form-group">
+    <label for="lastName" class="control-label">Surname<span class="info"></span></label>
+    <input type="text" class="form-control" id="lastName" placeholder="Surname">
+    <!-- <p class="help-block"></p> -->
+  </div>
+  <div class="form-group">
+    <label for="jobTitle" class="control-label">Job Title<span class="info"></span></label>
+    <input type="text" class="form-control" id="jobTitle" placeholder="Job Title">
+    <!-- <p class="help-block"></p> -->
+  </div>
+  <!-- vvv Optional field? vvv -->
+  <div class="form-group">
+    <label for="teamOffice" class="control-label">Team/BU/Office<span class="info"></span></label>
+    <input type="text" class="form-control" id="teamOffice" placeholder="Team / BU / Office">
+    <!-- <p class="help-block"></p> -->
+  </div>
+  <div class="form-group">
+    <label for="lineManager" class="control-label">Line Manager<span class="info"></span></label>
+    <input type="text" class="form-control" id="lineManager" placeholder="Line Manager">
+    <!-- <p class="help-block"></p> -->
+  </div>
+</form>
