@@ -55,16 +55,6 @@ function explode_data(result, pos){
     return(res);
 }
 
-// function dataparser(result){
-//     var arr = [];
-//     var i = result.length;
-//     var pos = 1;
-//     while (pos < i)
-//         if (result[pos]["Your Details"].length)
-//             arr.push(result[pos++]["Your Details"]);
-//     return(arr);
-// }
-
 function filereader(dir){
     const dirpath = path.join(__dirname,dir);
     var arr = [];

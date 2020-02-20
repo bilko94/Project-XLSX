@@ -7,9 +7,9 @@ const data = new schema({
     job_title : {type: String,default:''},
     Team_name : {type: String,default:''},
     Line_Manager : {type: String,default:''},
-    Back_end : {type: Array},
-    Front_end : {type: Array},
-    NTT_systems : {type: Array}
+    Back_end : { type: Array},
+    Front_end : { type: Array},
+    NTT_systems : { type: Array}
 });
 
 const xlsdata = mongoose.model('xlsdata', data, 'xlsdata');
