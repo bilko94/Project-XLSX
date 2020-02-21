@@ -1,4 +1,5 @@
 import * as crypto from 'crypto-js';
+
 export class vaultClass {
     encrypt(string, pass) {
         var cipher = crypto.AES.encrypt(string, pass);

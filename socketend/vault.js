@@ -31,7 +31,6 @@ module.exports.encryptor = class vault {
         } catch { return({status:"formErr"}); }
     }
     package(data, recipient) {
-        console.log('wraping.......');
         let stringData = JSON.stringify( data );
         let encryptedData = this.encrypt( stringData, recipient.password);
         let message = {
