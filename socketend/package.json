@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "filesystem": "^1.0.1",
+    "fs": "0.0.1-security",
+    "mongoose": "^5.8.1",
+    "ws": "^7.2.1",
+    "xlsx": "^0.15.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

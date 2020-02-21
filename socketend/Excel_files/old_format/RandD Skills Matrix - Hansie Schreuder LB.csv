@@ -1,0 +1,57 @@
+Name;Hansie;;;;
+Surname;Schreuder;;;;
+Job Title;Web Developer;;;;
+Team name/BU/Office;Black Panthers(Lima Bean);;;;
+Who do you report to?;Frank Klopper;;;;
+;;Please rate yourself;;;Please rate yourself
+Back-end Stack;Back End Skill;Rating 1-5 (0=No experience);Front End Stack;Front End Skill;Rating 1-5  (0=No experience)
+Primary Patterns;API Gateway;0;Charting;Highcharts;0
+;MicroServices;0;;Keylines;0
+;Event Driven Architecture;0;Primary Patterns;Single Page Application, MVC;2
+Application Framework;NodeJS;2;UI ;HTML5 ;5
+;MoleculerJS;0;UI Style;CSS3 ;5
+;Vert.X;0;;SASS;5
+;NestJS;0;;Bootstrap;2
+Languages;NodeJS;2;Languages;JavaScript ;5
+;JavaScript/Typescript;3;;Typescript;2
+API;GraphQL (Resolvers/Mutators etc);0;Application Framework;AngularJS;2
+;REST ;2;;Angular 2 and above;1
+;SOAP;1;UI Components;Lodash;0
+Data Access;ODBC;0;Styling & Design;Bootstrap;2
+Databases;MS SQL Server;0;Connection;Websockets;2
+;MongoDB;2;JS Frameworks;Angular Elements;0
+;Elastic Search;0;;RxJS;0
+;Redis;0;;ngx Bootstrap;0
+Query Languages;SQL;4;State Management;NgRx;0
+;MDX;0;Data Access;GraphQL;1
+Message Queues;RabbitMQ;0;Code Respositories;GitHub/GitLab/BitBucket;2
+Security;OWIN;0;Methods, Libraries etc;Dependency Injection;0
+;WS-Fed;0;;Web Workers;0.5
+;SAML;0;;Lazy Loading;0
+;OAuth2;0;;Font Awesome;2
+;Active Directory;0;;Unit Tests;0
+;JWT;2;;Perfect Scrollbar;0
+Operating Systems;Linux;2;;AG Grid;0
+;Windows Server;0;;Apollo for GraphQL;0.5
+Virtualisation;Docker;2;NTT Systems;Please add any NTT system names you have working knowledge of;
+;;;Library;Basecoat;0
+NTT Systems Knowledge ;Please add any NTT system names you have working knowledge of;;;Basecoat Angular;0
+ITSM Dev;Server Controllers;0;Other…;;
+;Core ITSM Development;0;Additional Front End Skills;;
+;EMR;0;;;
+;CMD;0;;;
+;NCM;0;;;
+;Service Layer APIs;0;;;
+;DXS;0;;;
+;Cubes;0;;;
+Other…;;;;;
+;;;;;
+Additional Back End Skills;;;Notes;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+Notes;;;;;
