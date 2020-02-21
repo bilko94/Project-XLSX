@@ -9,6 +9,8 @@ import { XlsService } from "../xls.service";
 })
 export class SearchComponent implements OnInit {
 
+  user = { username:"liam", password:"mai-san" };
+
   @Input() resultsAll?: Boolean;
   searchResults;    //define data type first in a class
   show: Boolean;
@@ -20,24 +22,20 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.show = false;
-    this.sockTest();
   }
 
   onSubmit() {
     console.log("button pressed");    //  debug
-
     //fetch query param
     //fetch from db
     //put into var: searchResults
-
+    const data = { action:"find", data:"users" };
+    this.sockTest(data, this.user).then((res) => { console.log(res); });
     this.show = true;
   }
   // socket test
-  sockTest(){
-    const user = { username:"liam", password:"mai-san" };
-    const ProcessedData = { "frontend":"skill..." };
-    const data = { action:"add", ProcessedData };
-    this.socketService.sendReq(data, user).then(res => { console.log(res) });
+  sockTest(data, user){
+    return this.socketService.sendReq(data, user);
   }
 
 }

@@ -12,6 +12,8 @@ export class XlsService {
   sendReq(req, user){
     const conn = new WebSocket('ws://localhost:4000');
     const vault = new vaultClass();
+    console.log(user);
+    console.log(req);
     let request = vault.package(req, user);
     return new Promise((resolve) => {
     conn.onopen = () => {
