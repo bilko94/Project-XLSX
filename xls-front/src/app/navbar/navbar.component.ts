@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import * as socket from '../../../../socketend/API.js';
-
-let connection = new socket.API();
+import { XlsService } from "../xls.service";
 
 @Component({
   selector: 'app-navbar',
@@ -11,25 +9,12 @@ let connection = new socket.API();
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private socketService: XlsService) { }
 
   public sender = undefined;
+  user = { username:"bilko", password:"dust2" };
 
   ngOnInit(): void {
-    this.connect();
-  }
-
-  connect() {
-    const url = "ws://localhost:4003";
-    let socket = new WebSocket(url);
-    socket.onopen = () => {
-      this.sender = socket;
-      console.log("socket connected");
-    }
-    socket.onmessage = function (message) {
-      console.log('front end message(reply)');
-      console.log(message);
-    }.bind(this)
   }
 
   clickevent() {
@@ -37,13 +22,19 @@ export class NavbarComponent implements OnInit {
     console.log(message);
     if (message == "new format"){
       let data = { action: "populate", data: "C:\\Users\\Shane.Olivari\\Documents\\Code\\Project-XLSX\\backend\\Excel files"}
-      this.sender.send(data);
+      console.log("start");
+      this.sockTest(data, this.user);
     }
-    else if (message == "old format"){
-      let data = { action: "populateold", data: "RandD Skills Matrix - Evan Christians LB.xlsx"}
-      this.sender.send(data);
-    }
+    // else if (message == "old format"){
+    //   let data = { action: "populateold", data: "RandD Skills Matrix - Evan Christians LB.xlsx"}
+    //   this.sender.send(data);
+    // }
 
+  }
+
+  sockTest(data, user){
+    console.log("here1");
+    return this.socketService.sendReq(data, [user]);
   }
 
   goToBooks() {

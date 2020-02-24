@@ -61,19 +61,20 @@ let xlsdataModel = require('../models/xls_schema.js');
 
 module.exports.excess = class excess {
 
-    explode_data(result, pos){
-        var res = {};
-        res = result[pos];
-        return(res);
-    }
-
     filereader(dir){
-        const dirpath = path.join(__dirname,dir);
-        var arr = [];
-        let promise = new Promise(resolve => {
-            fs.readdir(dirpath, function (err, files) {
-                if (err) {
-                    return;
+    const dirpath = path.join(__dirname,dir);
+    var arr = [];
+    let promise = new Promise(resolve => {
+        fs.readdir(dirpath, function (err, files) {
+            if (err) {
+                return;
+            }
+            files.forEach(function (file) {
+                var exploded_dir = dir.split('.');
+                var compiled_dir = '.' + exploded_dir[2];
+                var data = compiled_dir + '/' + file;
+                if (file.split('.')[file.split('.') .length - 1] === 'xlsx'){
+                    arr.push(Parser(data));
                 }
                 files.forEach(function (file) {
                     var exploded_dir = dir.split('.');
@@ -89,6 +90,7 @@ module.exports.excess = class excess {
             });
         })
         return (promise);
+    })
     }
 
     Parser(dir){

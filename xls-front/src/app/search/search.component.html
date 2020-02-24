@@ -17,7 +17,7 @@
                 </form>
             </div>
             <div class="column--md-1">
-                <button type="submit" [disabled]="!searchForm.valid" class="btn btn-block btn-primary">Search</button>
+                <button [disabled]="!searchForm.valid" class="btn btn-block btn-primary" (click)="onSubmit()">Search</button>
             </div>
         </div>
 
